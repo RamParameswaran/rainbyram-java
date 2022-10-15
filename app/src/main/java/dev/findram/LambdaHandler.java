@@ -6,26 +6,38 @@ package dev.findram;
 import com.amazonaws.services.lambda.runtime.Context;
 import com.amazonaws.services.lambda.runtime.LambdaLogger;
 import com.amazonaws.services.lambda.runtime.RequestHandler;
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
+import dev.findram.services.WeatherService;
 
+import java.io.IOException;
 import java.util.Map;
 
+
 public class LambdaHandler implements RequestHandler<Map<String,String>, String> {
-        Gson gson = new GsonBuilder().setPrettyPrinting().create();
-        @Override
-        public String handleRequest(Map<String,String> event, Context context)
-        {
-            LambdaLogger logger = context.getLogger();
-            String response = new String("200 OK");
+    public final WeatherService weatherService;
 
-            // log execution details
-            logger.log("ENVIRONMENT VARIABLES: " + gson.toJson(System.getenv()));
-            logger.log("CONTEXT: " + gson.toJson(context));
-
-            // process event
-            logger.log("EVENT: " + gson.toJson(event));
-            logger.log("EVENT TYPE: " + event.getClass().toString());
-            return response;
-        }
+    public LambdaHandler(WeatherService weatherService){
+        this.weatherService = new WeatherService();
     }
+
+    @Override
+    public String handleRequest(Map<String,String> event, Context context)
+    {
+        LambdaLogger logger = context.getLogger();
+
+        try {
+            var forecast = weatherService.getForecastForLatLon(-35.2809, 149.1300);
+            var willRain = weatherService.checkForRainInNextNHours(forecast, 14);
+
+            if (willRain) {
+                return "{\"status\": 200, \"body\": \"Success. Text message sent to all subscribers via SMS.\"}";
+            }
+
+            return "{\"status\": 200, \"body\": \"No rain forecast. No action required.\"}";
+
+        } catch (Exception e) {
+            logger.log(e.toString());
+            return "Error: " + e.toString();
+        }
+
+    }
+}

@@ -3,20 +3,34 @@
  */
 package dev.findram;
 
-import com.amazonaws.services.lambda.runtime.Context;
 import dev.findram.helpers.TestContext;
+import dev.findram.services.WeatherForecastDTO;
+import dev.findram.services.WeatherService;
 import org.junit.jupiter.api.Test;
+import org.mockito.Mockito;
 
+import java.io.IOException;
 import java.util.Map;
 
 import static java.util.Map.entry;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.mockito.ArgumentMatchers.anyDouble;
 
 class LambdaHandlerTest {
-    @Test void appHasAGreeting() {
-        LambdaHandler classUnderTest = new LambdaHandler();
 
-        assertNotNull(classUnderTest.handleRequest(
+    @Test void handlerExecutesWithoutError() throws IOException, InterruptedException {
+        var mockReturn = new WeatherForecastDTO(
+                123,
+                123,
+                "gmt",
+                new WeatherForecastDTO.HourlyForecast[]{});
+
+        WeatherService spyWeatherService = Mockito.spy(new WeatherService());
+        Mockito.doReturn(mockReturn).when(spyWeatherService).getForecastForLatLon(anyDouble(), anyDouble());
+
+        LambdaHandler lambdaHandler = new LambdaHandler(spyWeatherService);
+
+        assertNotNull(lambdaHandler.handleRequest(
                 Map.ofEntries(
                         entry("foo","bar")
                 ),
