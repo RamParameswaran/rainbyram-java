@@ -16,10 +16,14 @@ public class LambdaHandler implements RequestHandler<Map<String,String>, String>
     public final WeatherService weatherService;
     public final SnsService snsService;
 
-    public LambdaHandler(WeatherService weatherService, SnsService snsService){
+    public LambdaHandler() {
+        this.weatherService = new WeatherService();
+        this.snsService = new SnsService();
+    }
+
+    public LambdaHandler(WeatherService weatherService, SnsService snsService) {
         this.weatherService = weatherService;
         this.snsService = snsService;
-
     }
 
     @Override
@@ -32,12 +36,11 @@ public class LambdaHandler implements RequestHandler<Map<String,String>, String>
             var willRain = weatherService.checkForRainInNextNHours(forecast, 14);
 
             if (willRain) {
-//                snsService.publish();
-
+                snsService.publish();
                 return "{\"status\": 200, \"body\": \"Success. Text message sent to all subscribers via SMS.\"}";
             }
-            snsService.publish();
 
+            snsService.publish();
             return "{\"status\": 200, \"body\": \"No rain forecast. No action required.\"}";
 
         } catch (Exception e) {
