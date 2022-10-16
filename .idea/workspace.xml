@@ -4,16 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="0142a680-af62-48f4-a18a-0952cd0cb13a" name="Changes" comment="Refactor / add `entities` dir">
-      <change afterPath="$PROJECT_DIR$/.idea/jarRepositories.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/dev/findram/entities/ForecastDataPoint.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/dev/findram/entities/HourlyForecast.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
+    <list default="true" id="0142a680-af62-48f4-a18a-0952cd0cb13a" name="Changes" comment="Fix unit tests">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/dev/findram/services/WeatherForecastDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/dev/findram/entities/WeatherForecast.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/dev/findram/services/WeatherService.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/dev/findram/services/WeatherService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/dev/findram/LambdaHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/dev/findram/LambdaHandler.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/test/java/dev/findram/LambdaHandlerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/test/java/dev/findram/LambdaHandlerTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/test/java/dev/findram/services/WeatherServiceTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/test/java/dev/findram/services/WeatherServiceTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -113,7 +107,30 @@
       <recent name="dev.findram.entities" />
     </key>
   </component>
-  <component name="RunManager" selected="Gradle.LambdaHandlerTest.handlerExecutesWithoutError">
+  <component name="RunManager" selected="JUnit.All in rainbyram-java.app.test">
+    <configuration name="LambdaHandlerTest" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" value="" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value=":app:test" />
+            <option value="--tests" />
+            <option value="&quot;dev.findram.LambdaHandlerTest&quot;" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <method v="2" />
+    </configuration>
     <configuration name="LambdaHandlerTest.handlerExecutesWithoutError" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
@@ -137,70 +154,38 @@
       <DebugAllEnabled>false</DebugAllEnabled>
       <method v="2" />
     </configuration>
-    <configuration name="/home/ram/Dropbox/My Projects/rainbyram-java [buildZip]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+    <configuration name="LambdaHandlerTest.handlerExecutesWithoutError_NoRainForecasted" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
         <option name="externalSystemIdString" value="GRADLE" />
-        <option name="scriptParameters" />
+        <option name="scriptParameters" value="" />
         <option name="taskDescriptions">
           <list />
         </option>
         <option name="taskNames">
           <list>
-            <option value="buildZip" />
+            <option value=":app:test" />
+            <option value="--tests" />
+            <option value="&quot;dev.findram.LambdaHandlerTest.handlerExecutesWithoutError_NoRainForecasted&quot;" />
           </list>
         </option>
         <option name="vmOptions" />
       </ExternalSystemSettings>
-      <ExternalSystemDebugServerProcess>true</ExternalSystemDebugServerProcess>
-      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
-      <DebugAllEnabled>false</DebugAllEnabled>
-      <method v="2" />
-    </configuration>
-    <configuration name="/home/ram/Dropbox/My Projects/rainbyram-java [build]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
-      <ExternalSystemSettings>
-        <option name="executionName" />
-        <option name="externalProjectPath" value="$PROJECT_DIR$" />
-        <option name="externalSystemIdString" value="GRADLE" />
-        <option name="scriptParameters" />
-        <option name="taskDescriptions">
-          <list />
-        </option>
-        <option name="taskNames">
-          <list>
-            <option value="build" />
-          </list>
-        </option>
-        <option name="vmOptions" />
-      </ExternalSystemSettings>
-      <ExternalSystemDebugServerProcess>true</ExternalSystemDebugServerProcess>
-      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
-      <DebugAllEnabled>false</DebugAllEnabled>
-      <method v="2" />
-    </configuration>
-    <configuration name="/home/ram/Dropbox/My Projects/rainbyram-java [test]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
-      <ExternalSystemSettings>
-        <option name="executionName" />
-        <option name="externalProjectPath" value="$PROJECT_DIR$" />
-        <option name="externalSystemIdString" value="GRADLE" />
-        <option name="scriptParameters" />
-        <option name="taskDescriptions">
-          <list />
-        </option>
-        <option name="taskNames">
-          <list>
-            <option value="test" />
-          </list>
-        </option>
-        <option name="vmOptions" />
-      </ExternalSystemSettings>
-      <ExternalSystemDebugServerProcess>true</ExternalSystemDebugServerProcess>
+      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
       <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
       <DebugAllEnabled>false</DebugAllEnabled>
       <method v="2" />
     </configuration>
     <configuration name="All in rainbyram-java.app.test (1)" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="rainbyram-java.app.test" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="TEST_OBJECT" value="package" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="All in rainbyram-java.app.test" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="rainbyram-java.app.test" />
       <option name="PACKAGE_NAME" value="" />
       <option name="TEST_OBJECT" value="package" />
@@ -220,19 +205,19 @@
       </method>
     </configuration>
     <list>
+      <item itemvalue="Gradle.LambdaHandlerTest" />
       <item itemvalue="Gradle.LambdaHandlerTest.handlerExecutesWithoutError" />
-      <item itemvalue="Gradle./home/ram/Dropbox/My Projects/rainbyram-java [buildZip]" />
-      <item itemvalue="Gradle./home/ram/Dropbox/My Projects/rainbyram-java [build]" />
-      <item itemvalue="Gradle./home/ram/Dropbox/My Projects/rainbyram-java [test]" />
+      <item itemvalue="Gradle.LambdaHandlerTest.handlerExecutesWithoutError_NoRainForecasted" />
       <item itemvalue="JUnit.All in rainbyram-java.app.test (1)" />
+      <item itemvalue="JUnit.All in rainbyram-java.app.test" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.All in rainbyram-java.app.test" />
+        <item itemvalue="Gradle.LambdaHandlerTest" />
+        <item itemvalue="Gradle.LambdaHandlerTest.handlerExecutesWithoutError_NoRainForecasted" />
         <item itemvalue="Gradle.LambdaHandlerTest.handlerExecutesWithoutError" />
         <item itemvalue="JUnit.All in rainbyram-java.app.test (1)" />
-        <item itemvalue="Gradle./home/ram/Dropbox/My Projects/rainbyram-java [test]" />
-        <item itemvalue="Gradle./home/ram/Dropbox/My Projects/rainbyram-java [build]" />
-        <item itemvalue="Gradle./home/ram/Dropbox/My Projects/rainbyram-java [buildZip]" />
       </list>
     </recent_temporary>
   </component>
@@ -287,7 +272,14 @@
       <option name="project" value="LOCAL" />
       <updated>1665876303012</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="Refactor / add `entities` dir">
+      <created>1665919977787</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1665919977787</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -309,18 +301,10 @@
     <MESSAGE value="Add gradle wrapper" />
     <MESSAGE value="Add logic and unit tests for fetching/parsing weather forecasts" />
     <MESSAGE value="Refactor / add `entities` dir" />
-    <option name="LAST_COMMIT_MESSAGE" value="Refactor / add `entities` dir" />
+    <MESSAGE value="Fix unit tests" />
+    <option name="LAST_COMMIT_MESSAGE" value="Fix unit tests" />
   </component>
   <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/app/src/test/java/dev/findram/LambdaHandlerTest.java</url>
-          <line>33</line>
-          <option name="timeStamp" value="1" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
     <pin-to-top-manager>
       <pinned-members>
         <PinnedItemInfo parentTag="jdk.internal.net.http.HttpResponseImpl" memberName="rawChannelProvider" />

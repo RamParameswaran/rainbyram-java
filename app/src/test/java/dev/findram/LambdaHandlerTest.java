@@ -7,35 +7,60 @@ import dev.findram.entities.HourlyForecast;
 import dev.findram.helpers.TestContext;
 import dev.findram.entities.WeatherForecast;
 import dev.findram.services.WeatherService;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.TestInstance;
 import org.mockito.Mockito;
 
 import java.io.IOException;
 import java.util.Map;
 
 import static java.util.Map.entry;
-import static org.junit.jupiter.api.Assertions.assertNotNull;
-import static org.mockito.ArgumentMatchers.anyDouble;
+import static org.mockito.ArgumentMatchers.*;
 
+@TestInstance(TestInstance.Lifecycle.PER_CLASS)
 class LambdaHandlerTest {
+    WeatherService spyWeatherService = Mockito.spy(new WeatherService());
 
-    @Test void handlerExecutesWithoutError() throws IOException, InterruptedException {
+    @BeforeAll
+    void setUp() throws IOException, InterruptedException {
         var mockReturn = new WeatherForecast(
                 123,
                 123,
                 "gmt",
                 new HourlyForecast[]{});
 
-        WeatherService spyWeatherService = Mockito.spy(new WeatherService());
         Mockito.doReturn(mockReturn).when(spyWeatherService).getForecastForLatLon(anyDouble(), anyDouble());
+    }
+
+    @Test void handlerExecutesWithoutError_NoRainForecasted() {
+        Mockito.doReturn(false).when(spyWeatherService).checkForRainInNextNHours(any(), anyInt());
 
         LambdaHandler lambdaHandler = new LambdaHandler(spyWeatherService);
 
-        assertNotNull(lambdaHandler.handleRequest(
+        var response = lambdaHandler.handleRequest(
                 Map.ofEntries(
                         entry("foo","bar")
                 ),
                 new TestContext()
-        ));
+        );
+
+        Assertions.assertTrue(response.contains("\"status\": 200, \"body\": \"No rain forecast. No action required.\""));
+    }
+
+    @Test void handlerExecutesWithoutError_RainForecasted() {
+        Mockito.doReturn(true).when(spyWeatherService).checkForRainInNextNHours(any(), anyInt());
+
+        LambdaHandler lambdaHandler = new LambdaHandler(spyWeatherService);
+
+        var response = lambdaHandler.handleRequest(
+                Map.ofEntries(
+                        entry("foo","bar")
+                ),
+                new TestContext()
+        );
+
+        Assertions.assertTrue(response.contains("\"status\": 200, \"body\": \"Success. Text message sent to all subscribers via SMS.\""));
     }
 }

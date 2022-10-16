@@ -8,7 +8,6 @@ import com.amazonaws.services.lambda.runtime.LambdaLogger;
 import com.amazonaws.services.lambda.runtime.RequestHandler;
 import dev.findram.services.WeatherService;
 
-import java.io.IOException;
 import java.util.Map;
 
 
@@ -16,7 +15,7 @@ public class LambdaHandler implements RequestHandler<Map<String,String>, String>
     public final WeatherService weatherService;
 
     public LambdaHandler(WeatherService weatherService){
-        this.weatherService = new WeatherService();
+        this.weatherService = weatherService;
     }
 
     @Override
@@ -36,7 +35,7 @@ public class LambdaHandler implements RequestHandler<Map<String,String>, String>
 
         } catch (Exception e) {
             logger.log(e.toString());
-            return "Error: " + e.toString();
+            return "Error: " + e;
         }
 
     }
