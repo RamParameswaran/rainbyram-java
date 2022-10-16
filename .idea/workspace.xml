@@ -4,22 +4,21 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="0142a680-af62-48f4-a18a-0952cd0cb13a" name="Changes" comment="Simplify build.gradle">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/app/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/dev/findram/LambdaHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/dev/findram/LambdaHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/dev/findram/entities/City.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/dev/findram/dtos/City.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/dev/findram/entities/ForecastDataPoint.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/dev/findram/dtos/ForecastDataPointDTO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/dev/findram/entities/HourlyForecast.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/dev/findram/dtos/HourlyForecastDTO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/dev/findram/entities/WeatherForecast.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/dev/findram/dtos/WeatherForecastDTO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/dev/findram/services/WeatherService.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/dev/findram/services/WeatherService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/test/java/dev/findram/LambdaHandlerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/test/java/dev/findram/LambdaHandlerTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/test/java/dev/findram/services/WeatherServiceTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/test/java/dev/findram/services/WeatherServiceTest.java" afterDir="false" />
+    <list default="true" id="0142a680-af62-48f4-a18a-0952cd0cb13a" name="Changes" comment="Rename `entities` dir to `dtos` for more accurate naming convention">
+      <change beforePath="$PROJECT_DIR$/app/gradle/wrapper/gradle-wrapper.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/gradle/wrapper/gradle-wrapper.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/gradlew" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/gradlew.bat" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ChangesViewManager">
+    <option name="groupingKeys">
+      <option value="module" />
+    </option>
   </component>
   <component name="ExternalProjectsData">
     <projectState path="$PROJECT_DIR$">
@@ -316,7 +315,14 @@
       <option name="project" value="LOCAL" />
       <updated>1665931051338</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="Rename `entities` dir to `dtos` for more accurate naming convention">
+      <created>1665948534512</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1665948534512</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -344,7 +350,8 @@
     <MESSAGE value="Generalise city/lat/lon config into `config.properties`" />
     <MESSAGE value="Add Github Actions CI pipeline" />
     <MESSAGE value="Simplify build.gradle" />
-    <option name="LAST_COMMIT_MESSAGE" value="Simplify build.gradle" />
+    <MESSAGE value="Rename `entities` dir to `dtos` for more accurate naming convention" />
+    <option name="LAST_COMMIT_MESSAGE" value="Rename `entities` dir to `dtos` for more accurate naming convention" />
   </component>
   <component name="XDebuggerManager">
     <pin-to-top-manager>
