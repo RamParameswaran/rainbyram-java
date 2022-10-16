@@ -6,6 +6,7 @@ package dev.findram;
 import dev.findram.entities.HourlyForecast;
 import dev.findram.helpers.TestContext;
 import dev.findram.entities.WeatherForecast;
+import dev.findram.services.SnsService;
 import dev.findram.services.WeatherService;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeAll;
@@ -22,6 +23,7 @@ import static org.mockito.ArgumentMatchers.*;
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 class LambdaHandlerTest {
     WeatherService spyWeatherService = Mockito.spy(new WeatherService());
+    SnsService spySnsService = Mockito.spy(new SnsService());
 
     @BeforeAll
     void setUp() throws IOException, InterruptedException {
@@ -32,12 +34,13 @@ class LambdaHandlerTest {
                 new HourlyForecast[]{});
 
         Mockito.doReturn(mockReturn).when(spyWeatherService).getForecastForLatLon(anyDouble(), anyDouble());
+        Mockito.doNothing().when(spySnsService).publish();
     }
 
     @Test void handlerExecutesWithoutError_NoRainForecasted() {
         Mockito.doReturn(false).when(spyWeatherService).checkForRainInNextNHours(any(), anyInt());
 
-        LambdaHandler lambdaHandler = new LambdaHandler(spyWeatherService);
+        LambdaHandler lambdaHandler = new LambdaHandler(spyWeatherService, spySnsService);
 
         var response = lambdaHandler.handleRequest(
                 Map.ofEntries(
@@ -52,7 +55,7 @@ class LambdaHandlerTest {
     @Test void handlerExecutesWithoutError_RainForecasted() {
         Mockito.doReturn(true).when(spyWeatherService).checkForRainInNextNHours(any(), anyInt());
 
-        LambdaHandler lambdaHandler = new LambdaHandler(spyWeatherService);
+        LambdaHandler lambdaHandler = new LambdaHandler(spyWeatherService, spySnsService);
 
         var response = lambdaHandler.handleRequest(
                 Map.ofEntries(

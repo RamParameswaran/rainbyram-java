@@ -6,6 +6,7 @@ package dev.findram;
 import com.amazonaws.services.lambda.runtime.Context;
 import com.amazonaws.services.lambda.runtime.LambdaLogger;
 import com.amazonaws.services.lambda.runtime.RequestHandler;
+import dev.findram.services.SnsService;
 import dev.findram.services.WeatherService;
 
 import java.util.Map;
@@ -13,9 +14,12 @@ import java.util.Map;
 
 public class LambdaHandler implements RequestHandler<Map<String,String>, String> {
     public final WeatherService weatherService;
+    public final SnsService snsService;
 
-    public LambdaHandler(WeatherService weatherService){
+    public LambdaHandler(WeatherService weatherService, SnsService snsService){
         this.weatherService = weatherService;
+        this.snsService = snsService;
+
     }
 
     @Override
@@ -28,8 +32,11 @@ public class LambdaHandler implements RequestHandler<Map<String,String>, String>
             var willRain = weatherService.checkForRainInNextNHours(forecast, 14);
 
             if (willRain) {
+//                snsService.publish();
+
                 return "{\"status\": 200, \"body\": \"Success. Text message sent to all subscribers via SMS.\"}";
             }
+            snsService.publish();
 
             return "{\"status\": 200, \"body\": \"No rain forecast. No action required.\"}";
 
