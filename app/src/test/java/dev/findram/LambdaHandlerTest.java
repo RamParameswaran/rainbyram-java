@@ -3,8 +3,9 @@
  */
 package dev.findram;
 
+import dev.findram.entities.HourlyForecast;
 import dev.findram.helpers.TestContext;
-import dev.findram.services.WeatherForecastDTO;
+import dev.findram.entities.WeatherForecast;
 import dev.findram.services.WeatherService;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
@@ -19,11 +20,11 @@ import static org.mockito.ArgumentMatchers.anyDouble;
 class LambdaHandlerTest {
 
     @Test void handlerExecutesWithoutError() throws IOException, InterruptedException {
-        var mockReturn = new WeatherForecastDTO(
+        var mockReturn = new WeatherForecast(
                 123,
                 123,
                 "gmt",
-                new WeatherForecastDTO.HourlyForecast[]{});
+                new HourlyForecast[]{});
 
         WeatherService spyWeatherService = Mockito.spy(new WeatherService());
         Mockito.doReturn(mockReturn).when(spyWeatherService).getForecastForLatLon(anyDouble(), anyDouble());

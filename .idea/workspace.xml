@@ -4,18 +4,16 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="0142a680-af62-48f4-a18a-0952cd0cb13a" name="Changes" comment="Add boilerplate for aws lambda handler">
-      <change afterPath="$PROJECT_DIR$/.idea/.name" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/dev/findram/services/WeatherForecastDTO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/dev/findram/services/WeatherService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/test/java/dev/findram/services/WeatherServiceTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+    <list default="true" id="0142a680-af62-48f4-a18a-0952cd0cb13a" name="Changes" comment="Refactor / add `entities` dir">
+      <change afterPath="$PROJECT_DIR$/.idea/jarRepositories.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/dev/findram/entities/ForecastDataPoint.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/dev/findram/entities/HourlyForecast.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/app/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/dev/findram/LambdaHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/dev/findram/LambdaHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/dev/findram/services/WeatherForecastDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/dev/findram/entities/WeatherForecast.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/dev/findram/services/WeatherService.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/dev/findram/services/WeatherService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/test/java/dev/findram/LambdaHandlerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/test/java/dev/findram/LambdaHandlerTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/test/java/dev/findram/services/WeatherServiceTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/test/java/dev/findram/services/WeatherServiceTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -55,13 +53,18 @@
                 <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
                 <item name="rainbyram-java" type="f1a62948:ProjectNode" />
                 <item name="Tasks" type="e4a08cd1:TasksNode" />
-                <item name="other" type="c8890929:TasksNode$1" />
+                <item name="build" type="c8890929:TasksNode$1" />
               </path>
               <path>
                 <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
                 <item name="rainbyram-java" type="f1a62948:ProjectNode" />
                 <item name="Tasks" type="e4a08cd1:TasksNode" />
                 <item name="verification" type="c8890929:TasksNode$1" />
+              </path>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="rainbyram-java" type="f1a62948:ProjectNode" />
+                <item name="Run Configurations" type="7b0102dc:RunConfigurationsNode" />
               </path>
             </expand>
             <select />
@@ -95,83 +98,112 @@
     <option name="showLibraryContents" value="true" />
     <option name="showVisibilityIcons" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "project.structure.last.edited": "Modules",
-    "project.structure.proportion": "0.15",
-    "project.structure.side.proportion": "0.2"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;
   }
-}]]></component>
-  <component name="RunManager" selected="JUnit.All in rainbyram-java.app.test">
-    <configuration name="All in rainbyram-java.app.test" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+}</component>
+  <component name="RecentsManager">
+    <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
+      <recent name="dev.findram.entities" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Gradle.LambdaHandlerTest.handlerExecutesWithoutError">
+    <configuration name="LambdaHandlerTest.handlerExecutesWithoutError" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" value="" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value=":app:test" />
+            <option value="--tests" />
+            <option value="&quot;dev.findram.LambdaHandlerTest.handlerExecutesWithoutError&quot;" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <method v="2" />
+    </configuration>
+    <configuration name="/home/ram/Dropbox/My Projects/rainbyram-java [buildZip]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value="buildZip" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>true</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <method v="2" />
+    </configuration>
+    <configuration name="/home/ram/Dropbox/My Projects/rainbyram-java [build]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value="build" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>true</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <method v="2" />
+    </configuration>
+    <configuration name="/home/ram/Dropbox/My Projects/rainbyram-java [test]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value="test" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>true</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <method v="2" />
+    </configuration>
+    <configuration name="All in rainbyram-java.app.test (1)" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="rainbyram-java.app.test" />
       <option name="PACKAGE_NAME" value="" />
       <option name="TEST_OBJECT" value="package" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="LambdaHandlerTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="rainbyram-java.app.test" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="dev.findram.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="dev.findram" />
-      <option name="MAIN_CLASS_NAME" value="dev.findram.LambdaHandlerTest" />
-      <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="LambdaHandlerTest.appHasAGreeting" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="rainbyram-java.app.test" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="dev.findram.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="dev.findram" />
-      <option name="MAIN_CLASS_NAME" value="dev.findram.LambdaHandlerTest" />
-      <option name="METHOD_NAME" value="appHasAGreeting" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="WeatherServiceTest (1)" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="rainbyram-java.app.test" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="dev.findram.services.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="dev.findram.services" />
-      <option name="MAIN_CLASS_NAME" value="dev.findram.services.WeatherServiceTest" />
-      <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="WeatherServiceTest.testCheckForRainReturnsFalseWhenRainNotInUpcomingForecast" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="rainbyram-java.app.test" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="dev.findram.services.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="dev.findram.services" />
-      <option name="MAIN_CLASS_NAME" value="dev.findram.services.WeatherServiceTest" />
-      <option name="METHOD_NAME" value="testCheckForRainReturnsFalseWhenRainNotInUpcomingForecast" />
-      <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -188,19 +220,19 @@
       </method>
     </configuration>
     <list>
-      <item itemvalue="JUnit.All in rainbyram-java.app.test" />
-      <item itemvalue="JUnit.LambdaHandlerTest" />
-      <item itemvalue="JUnit.LambdaHandlerTest.appHasAGreeting" />
-      <item itemvalue="JUnit.WeatherServiceTest (1)" />
-      <item itemvalue="JUnit.WeatherServiceTest.testCheckForRainReturnsFalseWhenRainNotInUpcomingForecast" />
+      <item itemvalue="Gradle.LambdaHandlerTest.handlerExecutesWithoutError" />
+      <item itemvalue="Gradle./home/ram/Dropbox/My Projects/rainbyram-java [buildZip]" />
+      <item itemvalue="Gradle./home/ram/Dropbox/My Projects/rainbyram-java [build]" />
+      <item itemvalue="Gradle./home/ram/Dropbox/My Projects/rainbyram-java [test]" />
+      <item itemvalue="JUnit.All in rainbyram-java.app.test (1)" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.All in rainbyram-java.app.test" />
-        <item itemvalue="JUnit.LambdaHandlerTest.appHasAGreeting" />
-        <item itemvalue="JUnit.LambdaHandlerTest" />
-        <item itemvalue="JUnit.WeatherServiceTest (1)" />
-        <item itemvalue="JUnit.WeatherServiceTest.testCheckForRainReturnsFalseWhenRainNotInUpcomingForecast" />
+        <item itemvalue="Gradle.LambdaHandlerTest.handlerExecutesWithoutError" />
+        <item itemvalue="JUnit.All in rainbyram-java.app.test (1)" />
+        <item itemvalue="Gradle./home/ram/Dropbox/My Projects/rainbyram-java [test]" />
+        <item itemvalue="Gradle./home/ram/Dropbox/My Projects/rainbyram-java [build]" />
+        <item itemvalue="Gradle./home/ram/Dropbox/My Projects/rainbyram-java [buildZip]" />
       </list>
     </recent_temporary>
   </component>
@@ -241,7 +273,21 @@
       <option name="project" value="LOCAL" />
       <updated>1665853867904</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="Add gradle wrapper">
+      <created>1665876294301</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1665876294301</updated>
+    </task>
+    <task id="LOCAL-00006" summary="Add logic and unit tests for fetching/parsing weather forecasts">
+      <created>1665876303012</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1665876303012</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -260,25 +306,18 @@
     <MESSAGE value="Delete all" />
     <MESSAGE value="Add extra files" />
     <MESSAGE value="Add boilerplate for aws lambda handler" />
-    <option name="LAST_COMMIT_MESSAGE" value="Add boilerplate for aws lambda handler" />
+    <MESSAGE value="Add gradle wrapper" />
+    <MESSAGE value="Add logic and unit tests for fetching/parsing weather forecasts" />
+    <MESSAGE value="Refactor / add `entities` dir" />
+    <option name="LAST_COMMIT_MESSAGE" value="Refactor / add `entities` dir" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/app/src/main/java/dev/findram/LambdaHandler.java</url>
-          <line>15</line>
-          <option name="timeStamp" value="33" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/app/src/test/java/dev/findram/LambdaHandlerTest.java</url>
-          <line>27</line>
-          <option name="timeStamp" value="35" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/app/src/test/java/dev/findram/LambdaHandlerTest.java</url>
-          <line>32</line>
-          <option name="timeStamp" value="36" />
+          <line>33</line>
+          <option name="timeStamp" value="1" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

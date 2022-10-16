@@ -2,6 +2,9 @@ package dev.findram.services;
 
 
 import com.google.gson.Gson;
+import dev.findram.entities.ForecastDataPoint;
+import dev.findram.entities.HourlyForecast;
+import dev.findram.entities.WeatherForecast;
 
 import javax.ws.rs.core.UriBuilder;
 import java.io.IOException;
@@ -14,10 +17,9 @@ import java.net.http.HttpResponse;
 public class WeatherService {
     String OwmApiKey = System.getenv("OWM_API_KEY");
 
-    private URI Url = URI.create("https://api.openweathermap.org/data/2.5/onecall");
-    private HttpClient client = HttpClient.newHttpClient();
+    private final URI Url = URI.create("https://api.openweathermap.org/data/2.5/onecall");
 
-    public WeatherForecastDTO getForecastForLatLon(double lat, double lon) throws IOException, InterruptedException {
+    public WeatherForecast getForecastForLatLon(double lat, double lon) throws IOException, InterruptedException {
         URI Uri = UriBuilder.fromUri(Url)
                 .queryParam("appid", OwmApiKey)
                 .queryParam("exclude", "current,minutely,daily")
@@ -35,10 +37,8 @@ public class WeatherService {
                 .send(request, HttpResponse.BodyHandlers.ofString());
 
         Gson gson = new Gson();
-        WeatherForecastDTO forecast = gson.fromJson(response.body(), WeatherForecastDTO.class);
-
-        return forecast;
-    };
+        return gson.fromJson(response.body(), WeatherForecast.class);
+    }
 
 
     /**
@@ -47,20 +47,18 @@ public class WeatherService {
      *
      * @return `true` if the forecast indicates rain in the following `hours_to_look_ahead` hours.
      */
-    public boolean checkForRainInNextNHours (WeatherForecastDTO forecast, int hours_to_look_ahead) {
-        int counter = 0;
-
+    public boolean checkForRainInNextNHours (WeatherForecast forecast, int hours_to_look_ahead) {
         for(int index = 0; index <= hours_to_look_ahead; index++){
 
-            var hourlyForecast = (WeatherForecastDTO.HourlyForecast)Array.get(forecast.hourly, index);
-            for (WeatherForecastDTO.WeatherData weatherData : hourlyForecast.weather) {
-                if (weatherData.id < 700) {
+            var hourlyForecast = (HourlyForecast)Array.get(forecast.hourly, index);
+            for (ForecastDataPoint weatherData : hourlyForecast.getWeather()) {
+                if (weatherData.getId() < 700) {
                     return true;
                 }
             }
         }
 
         return false;
-    };
+    }
 
 }

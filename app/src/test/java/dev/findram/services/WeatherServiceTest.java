@@ -1,5 +1,8 @@
 package dev.findram.services;
 
+import dev.findram.entities.ForecastDataPoint;
+import dev.findram.entities.HourlyForecast;
+import dev.findram.entities.WeatherForecast;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
 
@@ -15,14 +18,14 @@ public class WeatherServiceTest {
 
     WeatherService spyWeatherService = Mockito.spy(new WeatherService());
 
-    WeatherForecastDTO.WeatherData[] weather_no_rain = new WeatherForecastDTO.WeatherData[] {
-            WeatherForecastDTO.WeatherData
+    ForecastDataPoint[] weather_no_rain = new ForecastDataPoint[] {
+            ForecastDataPoint
             .builder()
             .id(800)
             .build()
             };
-    WeatherForecastDTO.WeatherData[] weather_rain = new WeatherForecastDTO.WeatherData[]{
-            WeatherForecastDTO.WeatherData
+    ForecastDataPoint[] weather_rain = new ForecastDataPoint[]{
+            ForecastDataPoint
             .builder()
             .id(699)
             .build()
@@ -32,24 +35,24 @@ public class WeatherServiceTest {
     @Test
     public void testCheckForRainReturnsFalseWhenRainNotInUpcomingForecast()  throws IOException, InterruptedException {
 
-        WeatherForecastDTO mockWeatherForecast = WeatherForecastDTO
+        WeatherForecast mockWeatherForecast = WeatherForecast
                 .builder()
                 .lon(123)
                 .lat(789)
-                .hourly(new WeatherForecastDTO.HourlyForecast[]{
-                                WeatherForecastDTO.HourlyForecast
+                .hourly(new HourlyForecast[]{
+                                HourlyForecast
                                     .builder()
                                     .weather(weather_no_rain)
                                     .build(),
-                                WeatherForecastDTO.HourlyForecast
+                                HourlyForecast
                                     .builder()
                                     .weather(weather_no_rain)
                                     .build(),
-                                WeatherForecastDTO.HourlyForecast
+                                HourlyForecast
                                     .builder()
                                     .weather(weather_no_rain)
                                     .build(),
-                                WeatherForecastDTO.HourlyForecast
+                                HourlyForecast
                                     .builder()
                                     .weather(weather_no_rain)
                                     .build()
@@ -68,27 +71,27 @@ public class WeatherServiceTest {
     @Test
     public void testCheckForRainReturnsTrueWhenRainInUpcomingForecast()  throws IOException, InterruptedException{
 
-        WeatherForecastDTO mockWeatherForecast = WeatherForecastDTO
+        WeatherForecast mockWeatherForecast = WeatherForecast
                 .builder()
                 .lon(123)
                 .lat(789)
-                .hourly(new WeatherForecastDTO.HourlyForecast[]{
-                                WeatherForecastDTO.HourlyForecast
-                                        .builder()
-                                        .weather(weather_no_rain)
-                                        .build(),
-                                WeatherForecastDTO.HourlyForecast
-                                        .builder()
-                                        .weather(weather_rain)
-                                        .build(),
-                                WeatherForecastDTO.HourlyForecast
-                                        .builder()
-                                        .weather(weather_no_rain)
-                                        .build(),
-                                WeatherForecastDTO.HourlyForecast
-                                        .builder()
-                                        .weather(weather_no_rain)
-                                        .build()
+                .hourly(new HourlyForecast[]{
+                                HourlyForecast
+                                    .builder()
+                                    .weather(weather_no_rain)
+                                    .build(),
+                                HourlyForecast
+                                    .builder()
+                                    .weather(weather_rain)
+                                    .build(),
+                                HourlyForecast
+                                    .builder()
+                                    .weather(weather_no_rain)
+                                    .build(),
+                                HourlyForecast
+                                    .builder()
+                                    .weather(weather_no_rain)
+                                    .build()
                         }
                 )
                 .build();
