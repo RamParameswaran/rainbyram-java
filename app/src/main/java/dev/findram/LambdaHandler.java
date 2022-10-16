@@ -6,25 +6,53 @@ package dev.findram;
 import com.amazonaws.services.lambda.runtime.Context;
 import com.amazonaws.services.lambda.runtime.LambdaLogger;
 import com.amazonaws.services.lambda.runtime.RequestHandler;
+import dev.findram.entities.City;
 import dev.findram.services.SnsService;
 import dev.findram.services.WeatherService;
 
+import java.io.IOException;
+import java.io.InputStream;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.Map;
+import java.util.Properties;
 
 
 public class LambdaHandler implements RequestHandler<Map<String,String>, String> {
+    private final City city;
+
     public final WeatherService weatherService;
     public final SnsService snsService;
 
-    public LambdaHandler() {
+    public LambdaHandler(){
         this.weatherService = new WeatherService();
         this.snsService = new SnsService();
+        this.city = setCity();
     }
 
     public LambdaHandler(WeatherService weatherService, SnsService snsService) {
         this.weatherService = weatherService;
         this.snsService = snsService;
+        this.city = setCity();
     }
+
+    private City setCity() {
+        InputStream input = LambdaHandler.class.getClassLoader().getResourceAsStream("config.properties");
+        Properties prop = new Properties();
+
+        try {
+            prop.load(input);
+        } catch (IOException e){
+            System.out.println(e);
+        }
+
+        return City.builder()
+                .name(prop.getProperty("cityName"))
+                .lat(Double.parseDouble(prop.getProperty("lat")))
+                .lon(Double.parseDouble(prop.getProperty("lon")))
+                .build();
+        }
+
 
     @Override
     public String handleRequest(Map<String,String> event, Context context)
@@ -32,15 +60,18 @@ public class LambdaHandler implements RequestHandler<Map<String,String>, String>
         LambdaLogger logger = context.getLogger();
 
         try {
-            var forecast = weatherService.getForecastForLatLon(-35.2809, 149.1300);
+            var forecast = weatherService.getForecastForLatLon(city.getLat(), city.getLon());
             var willRain = weatherService.checkForRainInNextNHours(forecast, 14);
 
             if (willRain) {
-                snsService.publish();
+                // Construct message
+                String dateString = new SimpleDateFormat("dd/MM/yyyy").format(new Date());
+                String message = String.format("😮 It's going to rain in %s today %s! Make sure you take an ☂", city.getName(), dateString);
+
+                snsService.publish(message);
                 return "{\"status\": 200, \"body\": \"Success. Text message sent to all subscribers via SMS.\"}";
             }
 
-            snsService.publish();
             return "{\"status\": 200, \"body\": \"No rain forecast. No action required.\"}";
 
         } catch (Exception e) {

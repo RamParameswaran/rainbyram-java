@@ -5,9 +5,6 @@ import com.amazonaws.services.sns.AmazonSNSClient;
 import com.amazonaws.services.sns.model.PublishRequest;
 import com.amazonaws.services.sns.model.MessageAttributeValue;
 
-import java.text.SimpleDateFormat;
-import java.util.Date;
-
 public class SnsService {
     private final String TOPIC_ARN = System.getenv("SNS_TOPIC_ARN");
     private final AmazonSNS snsClient = AmazonSNSClient
@@ -15,15 +12,9 @@ public class SnsService {
                                         .withRegion("eu-west-2")
                                         .build();
 
-    public void publish() {
-        // Format today's date as string
-        String dateString = new SimpleDateFormat("dd-MM-yyyy").format(new Date());
-
+    public void publish(String message) {
         // Construct SNS request
-        PublishRequest request = new PublishRequest(
-                TOPIC_ARN,
-                String.format("😮 It's going to rain today %s! Make sure you bring an ☂", dateString)
-                );
+        PublishRequest request = new PublishRequest(TOPIC_ARN, message);
 
         // Add MessageAttribute for SMS SenderID
         MessageAttributeValue messageAttributes = new MessageAttributeValue();

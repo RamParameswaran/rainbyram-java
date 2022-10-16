@@ -34,7 +34,7 @@ class LambdaHandlerTest {
                 new HourlyForecast[]{});
 
         Mockito.doReturn(mockReturn).when(spyWeatherService).getForecastForLatLon(anyDouble(), anyDouble());
-        Mockito.doNothing().when(spySnsService).publish();
+        Mockito.doNothing().when(spySnsService).publish(anyString());
     }
 
     @Test void handlerExecutesWithoutError_NoRainForecasted() {
