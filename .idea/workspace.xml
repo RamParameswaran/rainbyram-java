@@ -4,13 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="0142a680-af62-48f4-a18a-0952cd0cb13a" name="Changes" comment="Add MessageAttribute `SenderID` to SNS message">
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/dev/findram/entities/City.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/resources/config.properties" afterDir="false" />
+    <list default="true" id="0142a680-af62-48f4-a18a-0952cd0cb13a" name="Changes" comment="Add Github Actions CI pipeline">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/dev/findram/LambdaHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/dev/findram/LambdaHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/dev/findram/services/SnsService.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/dev/findram/services/SnsService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/test/java/dev/findram/LambdaHandlerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/test/java/dev/findram/LambdaHandlerTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/app/build.gradle" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -50,13 +46,7 @@
                 <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
                 <item name="rainbyram-java" type="f1a62948:ProjectNode" />
                 <item name="Tasks" type="e4a08cd1:TasksNode" />
-                <item name="other" type="c8890929:TasksNode$1" />
-              </path>
-              <path>
-                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
-                <item name="rainbyram-java" type="f1a62948:ProjectNode" />
-                <item name="Tasks" type="e4a08cd1:TasksNode" />
-                <item name="verification" type="c8890929:TasksNode$1" />
+                <item name="build" type="c8890929:TasksNode$1" />
               </path>
               <path>
                 <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
@@ -106,11 +96,14 @@
   }
 }</component>
   <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$" />
+    </key>
     <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
       <recent name="dev.findram.entities" />
     </key>
   </component>
-  <component name="RunManager" selected="Gradle.rainbyram-java [buildZip]">
+  <component name="RunManager" selected="Gradle.rainbyram-java [test]">
     <configuration name="LambdaHandlerTest" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
@@ -225,8 +218,8 @@
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Gradle.rainbyram-java [buildZip]" />
         <item itemvalue="Gradle.rainbyram-java [test]" />
+        <item itemvalue="Gradle.rainbyram-java [buildZip]" />
         <item itemvalue="Gradle.LambdaHandlerTest" />
         <item itemvalue="JUnit.All in rainbyram-java.app.test (1)" />
         <item itemvalue="Gradle.rainbyram-java [compileJava]" />
@@ -312,7 +305,21 @@
       <option name="project" value="LOCAL" />
       <updated>1665924998050</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="Generalise city/lat/lon config into `config.properties`">
+      <created>1665927001199</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1665927001199</updated>
+    </task>
+    <task id="LOCAL-00012" summary="Add Github Actions CI pipeline">
+      <created>1665929721582</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1665929721582</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -337,7 +344,9 @@
     <MESSAGE value="Fix unit tests" />
     <MESSAGE value="Add SnsService" />
     <MESSAGE value="Add MessageAttribute `SenderID` to SNS message" />
-    <option name="LAST_COMMIT_MESSAGE" value="Add MessageAttribute `SenderID` to SNS message" />
+    <MESSAGE value="Generalise city/lat/lon config into `config.properties`" />
+    <MESSAGE value="Add Github Actions CI pipeline" />
+    <option name="LAST_COMMIT_MESSAGE" value="Add Github Actions CI pipeline" />
   </component>
   <component name="XDebuggerManager">
     <pin-to-top-manager>
@@ -346,5 +355,8 @@
         <PinnedItemInfo parentTag="dev.findram.services.WeatherService" memberName="Url" />
       </pinned-members>
     </pin-to-top-manager>
+  </component>
+  <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/app$rainbyram_java__test_.ic" NAME="rainbyram-java [test] Coverage Results" MODIFIED="1665929420438" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
   </component>
 </project>
