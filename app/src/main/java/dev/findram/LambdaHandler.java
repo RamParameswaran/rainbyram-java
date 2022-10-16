@@ -6,7 +6,7 @@ package dev.findram;
 import com.amazonaws.services.lambda.runtime.Context;
 import com.amazonaws.services.lambda.runtime.LambdaLogger;
 import com.amazonaws.services.lambda.runtime.RequestHandler;
-import dev.findram.entities.City;
+import dev.findram.dtos.City;
 import dev.findram.services.SnsService;
 import dev.findram.services.WeatherService;
 

@@ -2,9 +2,9 @@ package dev.findram.services;
 
 
 import com.google.gson.Gson;
-import dev.findram.entities.ForecastDataPoint;
-import dev.findram.entities.HourlyForecast;
-import dev.findram.entities.WeatherForecast;
+import dev.findram.dtos.ForecastDataPointDTO;
+import dev.findram.dtos.HourlyForecastDTO;
+import dev.findram.dtos.WeatherForecastDTO;
 
 import javax.ws.rs.core.UriBuilder;
 import java.io.IOException;
@@ -19,7 +19,7 @@ public class WeatherService {
 
     private final URI Url = URI.create("https://api.openweathermap.org/data/2.5/onecall");
 
-    public WeatherForecast getForecastForLatLon(double lat, double lon) throws IOException, InterruptedException {
+    public WeatherForecastDTO getForecastForLatLon(double lat, double lon) throws IOException, InterruptedException {
         URI Uri = UriBuilder.fromUri(Url)
                 .queryParam("appid", OwmApiKey)
                 .queryParam("exclude", "current,minutely,daily")
@@ -37,7 +37,7 @@ public class WeatherService {
                 .send(request, HttpResponse.BodyHandlers.ofString());
 
         Gson gson = new Gson();
-        return gson.fromJson(response.body(), WeatherForecast.class);
+        return gson.fromJson(response.body(), WeatherForecastDTO.class);
     }
 
 
@@ -47,11 +47,11 @@ public class WeatherService {
      *
      * @return `true` if the forecast indicates rain in the following `hours_to_look_ahead` hours.
      */
-    public boolean checkForRainInNextNHours (WeatherForecast forecast, int hours_to_look_ahead) {
+    public boolean checkForRainInNextNHours (WeatherForecastDTO forecast, int hours_to_look_ahead) {
         for(int index = 0; index <= hours_to_look_ahead; index++){
 
-            var hourlyForecast = (HourlyForecast)Array.get(forecast.hourly, index);
-            for (ForecastDataPoint weatherData : hourlyForecast.getWeather()) {
+            var hourlyForecast = (HourlyForecastDTO)Array.get(forecast.hourly, index);
+            for (ForecastDataPointDTO weatherData : hourlyForecast.getWeather()) {
                 if (weatherData.getId() < 700) {
                     return true;
                 }

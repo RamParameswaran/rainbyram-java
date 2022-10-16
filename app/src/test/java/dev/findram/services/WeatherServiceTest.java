@@ -1,8 +1,8 @@
 package dev.findram.services;
 
-import dev.findram.entities.ForecastDataPoint;
-import dev.findram.entities.HourlyForecast;
-import dev.findram.entities.WeatherForecast;
+import dev.findram.dtos.ForecastDataPointDTO;
+import dev.findram.dtos.HourlyForecastDTO;
+import dev.findram.dtos.WeatherForecastDTO;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
 
@@ -18,14 +18,14 @@ public class WeatherServiceTest {
 
     WeatherService spyWeatherService = Mockito.spy(new WeatherService());
 
-    ForecastDataPoint[] weather_no_rain = new ForecastDataPoint[] {
-            ForecastDataPoint
+    ForecastDataPointDTO[] weather_no_rain = new ForecastDataPointDTO[] {
+            ForecastDataPointDTO
             .builder()
             .id(800)
             .build()
             };
-    ForecastDataPoint[] weather_rain = new ForecastDataPoint[]{
-            ForecastDataPoint
+    ForecastDataPointDTO[] weather_rain = new ForecastDataPointDTO[]{
+            ForecastDataPointDTO
             .builder()
             .id(699)
             .build()
@@ -35,24 +35,24 @@ public class WeatherServiceTest {
     @Test
     public void testCheckForRainReturnsFalseWhenRainNotInUpcomingForecast()  throws IOException, InterruptedException {
 
-        WeatherForecast mockWeatherForecast = WeatherForecast
+        WeatherForecastDTO mockWeatherForecastDTO = WeatherForecastDTO
                 .builder()
                 .lon(123)
                 .lat(789)
-                .hourly(new HourlyForecast[]{
-                                HourlyForecast
+                .hourly(new HourlyForecastDTO[]{
+                                HourlyForecastDTO
                                     .builder()
                                     .weather(weather_no_rain)
                                     .build(),
-                                HourlyForecast
+                                HourlyForecastDTO
                                     .builder()
                                     .weather(weather_no_rain)
                                     .build(),
-                                HourlyForecast
+                                HourlyForecastDTO
                                     .builder()
                                     .weather(weather_no_rain)
                                     .build(),
-                                HourlyForecast
+                                HourlyForecastDTO
                                     .builder()
                                     .weather(weather_no_rain)
                                     .build()
@@ -61,9 +61,9 @@ public class WeatherServiceTest {
                 .build();
 
         // Mock the http call and return a mocked WeatherForecastDTO object
-        doReturn(mockWeatherForecast).when(spyWeatherService).getForecastForLatLon(anyDouble(), anyDouble());
+        doReturn(mockWeatherForecastDTO).when(spyWeatherService).getForecastForLatLon(anyDouble(), anyDouble());
 
-        assertFalse(spyWeatherService.checkForRainInNextNHours(mockWeatherForecast, 3));
+        assertFalse(spyWeatherService.checkForRainInNextNHours(mockWeatherForecastDTO, 3));
 
     }
 
@@ -71,24 +71,24 @@ public class WeatherServiceTest {
     @Test
     public void testCheckForRainReturnsTrueWhenRainInUpcomingForecast()  throws IOException, InterruptedException{
 
-        WeatherForecast mockWeatherForecast = WeatherForecast
+        WeatherForecastDTO mockWeatherForecastDTO = WeatherForecastDTO
                 .builder()
                 .lon(123)
                 .lat(789)
-                .hourly(new HourlyForecast[]{
-                                HourlyForecast
+                .hourly(new HourlyForecastDTO[]{
+                                HourlyForecastDTO
                                     .builder()
                                     .weather(weather_no_rain)
                                     .build(),
-                                HourlyForecast
+                                HourlyForecastDTO
                                     .builder()
                                     .weather(weather_rain)
                                     .build(),
-                                HourlyForecast
+                                HourlyForecastDTO
                                     .builder()
                                     .weather(weather_no_rain)
                                     .build(),
-                                HourlyForecast
+                                HourlyForecastDTO
                                     .builder()
                                     .weather(weather_no_rain)
                                     .build()
@@ -97,9 +97,9 @@ public class WeatherServiceTest {
                 .build();
 
         // Mock the http call and return a mocked WeatherForecastDTO object
-        doReturn(mockWeatherForecast).when(spyWeatherService).getForecastForLatLon(anyDouble(), anyDouble());
+        doReturn(mockWeatherForecastDTO).when(spyWeatherService).getForecastForLatLon(anyDouble(), anyDouble());
 
-        assertTrue(spyWeatherService.checkForRainInNextNHours(mockWeatherForecast, 3));
+        assertTrue(spyWeatherService.checkForRainInNextNHours(mockWeatherForecastDTO, 3));
 
     }
 

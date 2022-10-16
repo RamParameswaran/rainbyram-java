@@ -4,9 +4,17 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="0142a680-af62-48f4-a18a-0952cd0cb13a" name="Changes" comment="Add Github Actions CI pipeline">
+    <list default="true" id="0142a680-af62-48f4-a18a-0952cd0cb13a" name="Changes" comment="Simplify build.gradle">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/app/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/dev/findram/LambdaHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/dev/findram/LambdaHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/dev/findram/entities/City.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/dev/findram/dtos/City.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/dev/findram/entities/ForecastDataPoint.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/dev/findram/dtos/ForecastDataPointDTO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/dev/findram/entities/HourlyForecast.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/dev/findram/dtos/HourlyForecastDTO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/dev/findram/entities/WeatherForecast.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/dev/findram/dtos/WeatherForecastDTO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/dev/findram/services/WeatherService.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/dev/findram/services/WeatherService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/test/java/dev/findram/LambdaHandlerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/test/java/dev/findram/LambdaHandlerTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/test/java/dev/findram/services/WeatherServiceTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/test/java/dev/findram/services/WeatherServiceTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -46,12 +54,7 @@
                 <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
                 <item name="rainbyram-java" type="f1a62948:ProjectNode" />
                 <item name="Tasks" type="e4a08cd1:TasksNode" />
-                <item name="build" type="c8890929:TasksNode$1" />
-              </path>
-              <path>
-                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
-                <item name="rainbyram-java" type="f1a62948:ProjectNode" />
-                <item name="Run Configurations" type="7b0102dc:RunConfigurationsNode" />
+                <item name="verification" type="c8890929:TasksNode$1" />
               </path>
             </expand>
             <select />
@@ -103,7 +106,7 @@
       <recent name="dev.findram.entities" />
     </key>
   </component>
-  <component name="RunManager" selected="Gradle.rainbyram-java [test]">
+  <component name="RunManager" selected="JUnit.All in rainbyram-java.app.test">
     <configuration name="LambdaHandlerTest" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
@@ -148,27 +151,6 @@
       <DebugAllEnabled>false</DebugAllEnabled>
       <method v="2" />
     </configuration>
-    <configuration name="rainbyram-java [compileJava]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
-      <ExternalSystemSettings>
-        <option name="executionName" />
-        <option name="externalProjectPath" value="$PROJECT_DIR$" />
-        <option name="externalSystemIdString" value="GRADLE" />
-        <option name="scriptParameters" />
-        <option name="taskDescriptions">
-          <list />
-        </option>
-        <option name="taskNames">
-          <list>
-            <option value="compileJava" />
-          </list>
-        </option>
-        <option name="vmOptions" />
-      </ExternalSystemSettings>
-      <ExternalSystemDebugServerProcess>true</ExternalSystemDebugServerProcess>
-      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
-      <DebugAllEnabled>false</DebugAllEnabled>
-      <method v="2" />
-    </configuration>
     <configuration name="rainbyram-java [test]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
@@ -198,6 +180,14 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="All in rainbyram-java.app.test" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="rainbyram-java.app.test" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="TEST_OBJECT" value="package" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration default="true" type="JetRunConfigurationType">
       <method v="2">
         <option name="Make" enabled="true" />
@@ -212,17 +202,17 @@
     <list>
       <item itemvalue="Gradle.LambdaHandlerTest" />
       <item itemvalue="Gradle.rainbyram-java [buildZip]" />
-      <item itemvalue="Gradle.rainbyram-java [compileJava]" />
       <item itemvalue="Gradle.rainbyram-java [test]" />
+      <item itemvalue="JUnit.All in rainbyram-java.app.test" />
       <item itemvalue="JUnit.All in rainbyram-java.app.test (1)" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.All in rainbyram-java.app.test" />
         <item itemvalue="Gradle.rainbyram-java [test]" />
         <item itemvalue="Gradle.rainbyram-java [buildZip]" />
         <item itemvalue="Gradle.LambdaHandlerTest" />
         <item itemvalue="JUnit.All in rainbyram-java.app.test (1)" />
-        <item itemvalue="Gradle.rainbyram-java [compileJava]" />
       </list>
     </recent_temporary>
   </component>
@@ -319,7 +309,14 @@
       <option name="project" value="LOCAL" />
       <updated>1665929721582</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="Simplify build.gradle">
+      <created>1665931051338</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1665931051338</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -346,7 +343,8 @@
     <MESSAGE value="Add MessageAttribute `SenderID` to SNS message" />
     <MESSAGE value="Generalise city/lat/lon config into `config.properties`" />
     <MESSAGE value="Add Github Actions CI pipeline" />
-    <option name="LAST_COMMIT_MESSAGE" value="Add Github Actions CI pipeline" />
+    <MESSAGE value="Simplify build.gradle" />
+    <option name="LAST_COMMIT_MESSAGE" value="Simplify build.gradle" />
   </component>
   <component name="XDebuggerManager">
     <pin-to-top-manager>
