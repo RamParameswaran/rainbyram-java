@@ -37,6 +37,8 @@ public class WeatherService {
                 .send(request, HttpResponse.BodyHandlers.ofString());
 
         Gson gson = new Gson();
+
+        System.out.println(response.body());
         return gson.fromJson(response.body(), WeatherForecastDTO.class);
     }
 

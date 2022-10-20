@@ -14,11 +14,10 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.util.Map;
 import java.util.Properties;
 
 
-public class LambdaHandler implements RequestHandler<Map<String,String>, String> {
+public class LambdaHandler implements RequestHandler<Object, String> {
     private final City city;
 
     public final WeatherService weatherService;
@@ -55,7 +54,7 @@ public class LambdaHandler implements RequestHandler<Map<String,String>, String>
 
 
     @Override
-    public String handleRequest(Map<String,String> event, Context context)
+    public String handleRequest(Object event, Context context)
     {
         LambdaLogger logger = context.getLogger();
 

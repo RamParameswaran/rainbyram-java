@@ -4,11 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="0142a680-af62-48f4-a18a-0952cd0cb13a" name="Changes" comment="Rename `entities` dir to `dtos` for more accurate naming convention">
-      <change beforePath="$PROJECT_DIR$/app/gradle/wrapper/gradle-wrapper.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/gradle/wrapper/gradle-wrapper.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/gradlew" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/gradlew.bat" beforeDir="false" />
+    <list default="true" id="0142a680-af62-48f4-a18a-0952cd0cb13a" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/dev/findram/LambdaHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/dev/findram/LambdaHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/dev/findram/services/WeatherService.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/dev/findram/services/WeatherService.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -48,6 +47,12 @@
                 <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
                 <item name="rainbyram-java" type="f1a62948:ProjectNode" />
                 <item name="Tasks" type="e4a08cd1:TasksNode" />
+              </path>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="rainbyram-java" type="f1a62948:ProjectNode" />
+                <item name="Tasks" type="e4a08cd1:TasksNode" />
+                <item name="other" type="c8890929:TasksNode$1" />
               </path>
               <path>
                 <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
@@ -105,7 +110,7 @@
       <recent name="dev.findram.entities" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.All in rainbyram-java.app.test">
+  <component name="RunManager" selected="Gradle.rainbyram-java [buildZip]">
     <configuration name="LambdaHandlerTest" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
@@ -207,9 +212,9 @@
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.All in rainbyram-java.app.test" />
-        <item itemvalue="Gradle.rainbyram-java [test]" />
         <item itemvalue="Gradle.rainbyram-java [buildZip]" />
+        <item itemvalue="Gradle.rainbyram-java [test]" />
+        <item itemvalue="JUnit.All in rainbyram-java.app.test" />
         <item itemvalue="Gradle.LambdaHandlerTest" />
         <item itemvalue="JUnit.All in rainbyram-java.app.test (1)" />
       </list>
@@ -322,7 +327,14 @@
       <option name="project" value="LOCAL" />
       <updated>1665948534512</updated>
     </task>
-    <option name="localTasksCounter" value="15" />
+    <task id="LOCAL-00015" summary="Delete redundant files">
+      <created>1665948674129</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1665948674129</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -351,9 +363,19 @@
     <MESSAGE value="Add Github Actions CI pipeline" />
     <MESSAGE value="Simplify build.gradle" />
     <MESSAGE value="Rename `entities` dir to `dtos` for more accurate naming convention" />
-    <option name="LAST_COMMIT_MESSAGE" value="Rename `entities` dir to `dtos` for more accurate naming convention" />
+    <MESSAGE value="Delete redundant files" />
+    <option name="LAST_COMMIT_MESSAGE" value="Delete redundant files" />
   </component>
   <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/app/src/main/java/dev/findram/LambdaHandler.java</url>
+          <line>65</line>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
     <pin-to-top-manager>
       <pinned-members>
         <PinnedItemInfo parentTag="jdk.internal.net.http.HttpResponseImpl" memberName="rawChannelProvider" />
